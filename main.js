@@ -33,8 +33,8 @@ function resizeCanvas() {
     };
   
     createUnityInstance(document.querySelector("#unity-canvas"), config, (progress) => {
-      var progressEl = document.getElementById("unity-loading-percentage");
-      if (progressEl) progressEl.innerText = Math.round(progress * 100) + "%";
+      var fillEl = document.getElementById("loading-bar-fill");
+      if (fillEl) fillEl.style.width = (progress * 100) + "%";
     }).then((unityInstance) => {
       var bar = document.getElementById("unity-loading-bar");
       if (bar) bar.style.display = "none";
