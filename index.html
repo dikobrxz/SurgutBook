@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>My Unity WebGL Build</title>
+  <title>Как появился человек умелый</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <style>
     html, body {
@@ -24,6 +24,16 @@
       left: 50%;
       transform: translate(-50%, -50%);
       background: #111;
+    }
+    #unity-loading-bar {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      z-index: 9999;
     }
   </style>
 </head>
@@ -51,20 +61,20 @@
       };
 
       createUnityInstance(document.querySelector("#unity-canvas"), config, (progress) => {
-        // Можно сюда добавить лоадер
+        document.getElementById("unity-loading-percentage").innerText = Math.round(progress * 100) + "%";
       }).then((unityInstance) => {
+        document.getElementById("unity-loading-bar").style.display = "none";
         window.unityInstance = unityInstance;
       }).catch((message) => {
         console.error(message);
       });
 
-      // Подгонка размера канваса
       function resizeCanvas() {
         var canvas = document.getElementById('unity-canvas');
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
-
         var targetRatio = 8 / 7;
+
         var newWidth = windowWidth;
         var newHeight = newWidth / targetRatio;
 
@@ -78,7 +88,7 @@
       }
 
       window.addEventListener('resize', resizeCanvas);
-      resizeCanvas(); // вызвать один раз при старте
+      resizeCanvas();
     });
   </script>
 </body>
