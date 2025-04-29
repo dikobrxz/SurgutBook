@@ -23,14 +23,14 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: #111;
+      background: #000000;
     }
     #unity-loading-bar {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: white;
+      color: #ffffff;
       font-family: sans-serif;
       text-align: center;
       z-index: 9999;
@@ -40,56 +40,13 @@
 <body>
   <div id="unity-container">
     <canvas id="unity-canvas"></canvas>
+    <div id="unity-loading-bar">
+      <div>Загрузка... <span id="unity-loading-percentage">0%</span></div>
+    </div>
   </div>
 
   <!-- ВАЖНО: прямое подключение loader.js -->
   <script src="Build/SurgutBookBuild.loader.js"></script>
-  
-  <script>
-    // Ждем полной загрузки страницы
-    window.addEventListener('load', function() {
-      var buildUrl = "Build";
-      var config = {
-        dataUrl: buildUrl + "/SurgutBookBuild.data",
-        frameworkUrl: buildUrl + "/SurgutBookBuild.framework.js",
-        codeUrl: buildUrl + "/SurgutBookBuild.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "endicomp",
-        productName: "SurgutBook",
-        productVersion: "1.0",
-        devicePixelRatio: 1
-      };
-
-      createUnityInstance(document.querySelector("#unity-canvas"), config, (progress) => {
-        document.getElementById("unity-loading-percentage").innerText = Math.round(progress * 100) + "%";
-      }).then((unityInstance) => {
-        document.getElementById("unity-loading-bar").style.display = "none";
-        window.unityInstance = unityInstance;
-      }).catch((message) => {
-        console.error(message);
-      });
-
-      function resizeCanvas() {
-        var canvas = document.getElementById('unity-canvas');
-        var windowWidth = window.innerWidth;
-        var windowHeight = window.innerHeight;
-        var targetRatio = 8 / 7;
-
-        var newWidth = windowWidth;
-        var newHeight = newWidth / targetRatio;
-
-        if (newHeight > windowHeight) {
-          newHeight = windowHeight;
-          newWidth = newHeight * targetRatio;
-        }
-
-        canvas.style.width = newWidth + 'px';
-        canvas.style.height = newHeight + 'px';
-      }
-
-      window.addEventListener('resize', resizeCanvas);
-      resizeCanvas();
-    });
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
