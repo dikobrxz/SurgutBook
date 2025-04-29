@@ -23,7 +23,7 @@ function resizeCanvas() {
     var buildUrl = "Build";
     var config = {
       dataUrl: buildUrl + "/SurgutBookBuild.data",
-      frameworkUrl: buildUrl + "/SurgutBookBuild.js",
+      frameworkUrl: buildUrl + "/SurgutBookBuild.framework.js",
       codeUrl: buildUrl + "/SurgutBookBuild.wasm",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "endicomp",
