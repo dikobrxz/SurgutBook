@@ -33,19 +33,19 @@
   </div>
 
   <!-- ВАЖНО: прямое подключение loader.js -->
-  <script src="Build/build.loader.js"></script>
+  <script src="Build/SurgutBookBuild.loader.js"></script>
   
   <script>
     // Ждем полной загрузки страницы
     window.addEventListener('load', function() {
       var buildUrl = "Build";
       var config = {
-        dataUrl: buildUrl + "/build.data",
-        frameworkUrl: buildUrl + "/build.framework.js",
-        codeUrl: buildUrl + "/build.wasm",
+        dataUrl: buildUrl + "/SurgutBookBuild.data",
+        frameworkUrl: buildUrl + "/SurgutBookBuild.framework.js",
+        codeUrl: buildUrl + "/SurgutBookBuild.wasm",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "YourCompany",
-        productName: "YourProduct",
+        companyName: "endicomp",
+        productName: "SurgutBook",
         productVersion: "1.0",
         devicePixelRatio: 1
       };
